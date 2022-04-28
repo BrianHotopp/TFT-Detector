@@ -1,3 +1,9 @@
+screenshots/
+labels/
+clean_data/images/
+clean_data/labels/
+models/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
