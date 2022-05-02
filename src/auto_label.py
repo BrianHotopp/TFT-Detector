@@ -84,7 +84,7 @@ if __name__ == "__main__":
         # get the labels, bounding boxes, and scores for the objects in the image
         labels, boxes, scores = model.predict(image)
         # perform non-maximum suppression on the bounding boxes
-        kept_indices = ops.nms(boxes, scores, 0.5)
+        kept_indices = ops.nms(boxes, scores, 0.4)
         # filter out the bounding boxes that were not kept
         labels = [labels[i] for i in kept_indices]
         boxes = boxes[kept_indices]
