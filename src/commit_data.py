@@ -99,9 +99,13 @@ if __name__ == "__main__":
         for image_file, new_image_file in zip(image_files, new_i_files):
             image_file.rename(new_image_file)
         print('Files moved successfully.')
-        # check that the files in the destination folder are sequential
         if len(list(commit_labels_to.glob('*.xml'))) != len(list(commit_images_to.glob('*.png'))):
             raise ValueError('The number of label files and image files in the destination folders must be the same. Label scheme might be corrputed.')
+        n = len(list(commit_labels_to.glob('*.xml')))
+        # check that the file names are in order
+        for i in range(n):
+            if not commit_labels_to.glob(f'{i}.xml') or not commit_images_to.glob(f'{i}.png'):
+                raise ValueError('The file names in the destination folders are not in order. Label scheme might be corrputed.')
     else:
         print('Files not moved.')
 
